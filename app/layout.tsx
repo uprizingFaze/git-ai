@@ -4,7 +4,6 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer/footer";
-import Nav from "@/components/ui/navbar";
 
 export const metadata: Metadata = {
   title: "Git Ai",
@@ -26,7 +25,6 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Nav />
             {children}
             <Footer />
           </ThemeProvider>

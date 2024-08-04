@@ -1,10 +1,19 @@
-'use client';
-
-import { useChat } from 'ai/react';
+"use client";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useChat } from "ai/react";
 import { Avatar } from "@/components/ui/avatar";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { BotIcon, SendIcon, UserIcon } from "@/components/icons";
+import TeamSwitcher from "./components/team-switcher";
 
 export default function Page() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
@@ -13,14 +22,36 @@ export default function Page() {
 
   return (
     <section className="m-6">
+      <Select>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Select a fruit" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes">Grapes</SelectItem>
+            <SelectItem value="pineapple">Pineapple</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+
+      <TeamSwitcher />
       <div className="flex rounded-xl p-2 border flex-col h-[95vh] bg-white dark:bg-black">
         <div className="flex-1 overflow-auto p-6 grid gap-4">
           <p className="text-center pt-16 text-9xl md:text-[10rem] lg:text-[12rem] font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 dark:from-neutral-950 to-neutral-300 dark:to-neutral-700 inset-x-0">
             Chat
           </p>
-          {messages.map(message => (
-            <div key={message.id} className={`flex items-start gap-4 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              {message.role === 'user' ? (
+          {messages.map((message) => (
+            <div
+              key={message.id}
+              className={`flex items-start gap-4 ${
+                message.role === "user" ? "justify-end" : "justify-start"
+              }`}
+            >
+              {message.role === "user" ? (
                 <>
                   <div className="bg-primary text-primary-foreground p-4 rounded-lg max-w-[70%]">
                     <p>{message.content}</p>
