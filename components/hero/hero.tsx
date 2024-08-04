@@ -1,5 +1,6 @@
 import { Link } from "next-view-transitions";
 import { Button } from "../ui/button";
+import Image from "next/image";
 
 function Hero() {
   return (
@@ -10,11 +11,11 @@ function Hero() {
             Git-Ai
           </p>
           <h1 className="pt-6 text-7xl bg-gradient-to-b from-white to-neutral-700 text-transparent bg-clip-text">
-            Visualiza, explora y pregunta
+            Visualiza explora y pregunta
           </h1>
         </div>
-        <div className="text-white py-10 flex flex-row">
-          <div className="flex-1">
+        <div className="text-white pt-8 flex flex-row">
+          <div className="flex-1 max-w-lg">
             <p className="text-muted-foreground text-xl">
               Visualiza de forma interactiva el{" "}
               <span className="text-white font-semibold">flujo</span> de tu
@@ -26,17 +27,24 @@ function Hero() {
               mas mientras mantienes el control total de tu proyecto.
             </p>
           </div>
-          <div className="flex-1">
-            <h2 className=""></h2>
+          <div className="flex-1 flex justify-center items-center">
+            <Image
+              src="/earth.svg"
+              alt="Hero"
+              width={500}
+              height={500}
+              className=""
+            />
           </div>
         </div>
-        <div className="py-16">
+        <div className="py-8">
           <Link href="/app">
-            <Button size="xl"> Comenzar!!</Button>
+            <Button className="text-base" size="xl">
+              Comenzar!!
+            </Button>
           </Link>
           <Link href="/about" className="pl-4">
-            <Button size="xl" variant="outline">
-              {" "}
+            <Button className="text-base" size="xl" variant="outline">
               Saber más
             </Button>
           </Link>
