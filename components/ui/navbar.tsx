@@ -49,19 +49,23 @@ function Nav() {
           </li>
         </ul>
         <li className="flex-shrink-0 mx-1">
-          <Button variant="ghost">
-            <SiGithub className="w-6 h-6"/>
-          </Button>
+          <Link href="https://github.com/uprizingFaze/git-ai">
+            <Button variant="ghost">
+              <SiGithub className="w-6 h-6" />
+            </Button>
+          </Link>
         </li>
         <li className="flex-shrink-0 mx-1">
-          <Button variant="ghost">
-            <SiTwitter className="w-6 h-6"/>
-          </Button>
+          <Link href="https://x.com/uprizingFaze">
+            <Button variant="ghost">
+              <SiTwitter className="w-6 h-6" />
+            </Button>
+          </Link>
         </li>
         <li className="flex-shrink-0 mx-1">
-          <Button>
-            Vamos!!
-          </Button>
+          <Link href="/chat">
+            <Button>Vamos!!</Button>
+          </Link>
         </li>
       </ul>
     </nav>

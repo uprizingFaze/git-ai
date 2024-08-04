@@ -38,7 +38,7 @@ function Hero() {
           </div>
         </div>
         <div className="py-8">
-          <Link href="/app">
+          <Link href="/chat">
             <Button className="text-base" size="xl">
               Comenzar!!
             </Button>
