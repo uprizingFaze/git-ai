@@ -4,237 +4,112 @@
 
 /* ShadCN styles */
 @layer base {
-    :root {
-        --background: 0 0% 97.5%;
-        --foreground: 240 10% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 240 10% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 240 10% 3.9%;
-        --primary: 240 5.9% 10%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 240 4.8% 95.9%;
-        --secondary-foreground: 240 5.9% 10%;
-        --muted: 240 4.8% 93%;
-        --muted-foreground: 240 3.8% 46.1%;
-        --accent: 240 4.8% 95.9%;
-        --accent-foreground: 240 5.9% 10%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 240 5.9% 90%;
-        --input: 240 5.9% 90%;
-        --ring: 240 5.9% 10%;
-        --radius: 0.5rem;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-    }
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 93%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
 
-    .dark {
-        --background: 0 0% 1.3%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 0%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 0%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 100%;
-        --primary-foreground: 240 5.9% 10%;
-        --secondary: 240 3.7% 15.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 240 3.7% 15.9%;
-        --muted-foreground: 240 5% 64.9%;
-        --accent: 240 3.7% 15.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 240 3.7% 15.9%;
-        --input: 240 3.7% 15.9%;
-        --ring: 240 4.9% 83.9%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-    }
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
 }
 /* Aplicacion colores body*/
 @layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
-
-/* Estilo para reactflow */
-.dndflow .dndnode {
-    height: 20px;
-    padding: 4px;
-    border: 1px solid #1a192b;
-    border-radius: 2px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: grab;
-}
-
-.dndflow .dndnode.input {
-    border-color: #0041d0;
-}
-
-.dndflow .dndnode.output {
-    border-color: #ff0072;
-}
-
-/* Estilo para el modo claro */
-::selection {
-    background-color: white;
-    color: black;
-}
-
-/* Estilo para el modo oscuro */
-.dark ::selection {
-    background-color: white;
-    color: black;
-}
-
-/* Estilo ButtonHover by Jhey*/
-.animatedButton-button > span:not(.animatedButton-srOnly) {
-    position: relative;
-    color: transparent;
-}
-
-.animatedButton-button > span:not(.animatedButton-srOnly)::after {
-    content: attr(data-char);
-    position: absolute;
-    display: inline-block;
-    inset: 0;
-    color: canvasText;
-}
-
-.animatedButton-button:is(:hover, :focus-visible)
-    > span:not(.animatedButton-srOnly)::after {
-    animation: animatedButton-flash calc(var(--animatedButton-speed, 0.25) * 1s)
-        calc(var(--animatedButton-index, 0) * 0.05s) steps(1, end);
-}
-
-@keyframes animatedButton-flash {
-    0%,
-    20% {
-        content: "_";
-    }
-    40% {
-        content: var(--animatedButton-char-1);
-    }
-    60% {
-        content: var(--animatedButton-char-2);
-    }
-    80% {
-        content: var(--animatedButton-char-3);
-    }
-}
-
-/* Cards alert */
-.dark {
-    --line: hsl(0, 0%, 90% / 0.15);
-    background: hsl(0, 0%, 2%);
-}
-
-.light {
-    --line: hsl(0, 0%, 10% / 0.15);
-    background: hsl(0, 0%, 98%);
-}
-
-@supports (color: color-mix(in oklch, red 0%, white)) {
-    .dark .aside {
-        border-color: color-mix(
-            in oklch,
-            var(--color) 5%,
-            oklch(100% 0 0 / 15%)
-        );
-        background: color-mix(in oklch, var(--color) 50%, oklch(0% 0 0 / 50%));
-        color: color-mix(in oklch, var(--color) 50%, oklch(100% 0 0));
-    }
-    .light .aside {
-        border-color: color-mix(
-            in oklch,
-            var(--color) 50%,
-            oklch(100% 0 0 / 15%)
-        );
-        background: color-mix(
-            in oklch,
-            var(--color) 25%,
-            oklch(100% 0 0 / 50%)
-        );
-        color: color-mix(in oklch, var(--color) 100%, oklch(100% 0 0));
-    }
-    .aside::-moz-selection {
-        background: color-mix(in oklch, var(--color) 90%, oklch(100% 0 0));
-        color: color-mix(in oklch, var(--color) 10%, oklch(100% 0 0));
-    }
-    .aside::selection {
-        background: color-mix(in oklch, var(--color) 90%, oklch(100% 0 0));
-        color: color-mix(in oklch, var(--color) 10%, oklch(100% 0 0));
-    }
-}
-
-@supports (color: rgb(from white r g b)) {
-    .dark .aside {
-        border-color: oklch(from var(--color) l c h / 0.25);
-        background: oklch(from var(--color) calc(l * 0.75) c h / 0.5);
-        color: oklch(from var(--color) calc(l * 1.5) c h);
-    }
-
-    .light .aside {
-        border-color: oklch(from var(--color) l c h / 25%);
-        background: oklch(from var(--color) calc(l * 1) c h / 20%);
-        color: oklch(from var(--color) calc(l * 1) c h);
-    }
-
-    .aside::-moz-selection {
-        background: oklch(from var(--color) calc(l * 1.1) c h);
-        color: oklch(from var(--color) 1 c h);
-    }
-
-    .aside::selection {
-        background: oklch(from var(--color) calc(l * 1.1) c h);
-        color: oklch(from var(--color) 1 c h);
-    }
-}
-
-.aside {
-    /* padding: 0.5rem 0.75rem; */
-    border-width: 1px;
-    border-style: solid;
-    /* border-radius: 6px; */
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    font-weight: 300;
-    line-height: 1.5;
-    white-space: nowrap;
-    transition: all 0.2s;
-}
-
-.css-card-warning {
-    --color: oklch(61.47% 0.16 64.21);
-}
-.css-card-error {
-    --color: red;
-}
-.css-card-success {
-    --color: hsl(145, 100%, 25%);
-}
-.css-card-note {
-    --color: oklch(41.84% 0 0);
-}
-.css-card-tip {
-    --color: oklch(53.24% 0.23 256.22);
-}
-.css-card-ai {
-    --color: oklch(58.11% 0.31 307.02);
+.hero {
+  background-color: hsla(224, 70%, 17%, 1);
+  background-image: radial-gradient(
+      circle at 91% 91%,
+      hsla(276, 72%, 4%, 0.46) 10%,
+      transparent 57%
+    ),
+    radial-gradient(
+      circle at 90% 84%,
+      hsla(197, 57%, 0%, 1) 17%,
+      transparent 81%
+    ),
+    radial-gradient(
+      circle at 63% 76%,
+      hsla(274, 90%, 2%, 1) 4%,
+      transparent 63%
+    ),
+    radial-gradient(
+      circle at 64% 25%,
+      hsla(271, 68%, 19%, 1) 10%,
+      transparent 66%
+    ),
+    radial-gradient(
+      circle at 82% 4%,
+      hsla(269, 82%, 4%, 1) 12%,
+      transparent 73%
+    ),
+    radial-gradient(
+      circle at 75% 55%,
+      hsla(222, 85%, 21%, 1) 13%,
+      transparent 84%
+    ),
+    radial-gradient(
+      circle at 50% 4%,
+      hsla(218, 79%, 9%, 1) 17%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 13% 9%,
+      hsla(276, 74%, 4%, 1) 10%,
+      transparent 57%
+    );
+  background-blend-mode: normal, normal, normal, normal, normal, normal, normal,
+    normal;
 }

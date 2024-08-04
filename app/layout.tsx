@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { ViewTransitions } from 'next-view-transitions'
-import { Inter } from "next/font/google";
+import { GeistMono } from 'geist/font/mono';
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ThemeProvider } from "@/components/theme-provider"
+import  Footer  from "@/components/footer/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,9 +17,17 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang='en'>
+      <html lang='en' className={GeistMono.className}>
         <body>
-          {children}
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Footer />
+          </ThemeProvider>
         </body>
       </html>
     </ViewTransitions>
