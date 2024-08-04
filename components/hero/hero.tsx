@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 function Hero() {
   return (
     <section className="">
-      <div className="hero px-10 pt-40 m-6 rounded-xl">
+      <div className="hero border px-10 pt-40 m-6 rounded-xl">
         <div className="">
           <p className="text-9xl font-semibold bg-gradient-to-b from-white to-neutral-700 text-transparent bg-clip-text">
             Git-Ai
@@ -32,10 +32,13 @@ function Hero() {
         </div>
         <div className="py-16">
           <Link href="/app">
-            <Button> Comenzar!!</Button>
+            <Button size="xl"> Comenzar!!</Button>
           </Link>
           <Link href="/about" className="pl-4">
-            <Button variant="outline" > Saber más</Button>
+            <Button size="xl" variant="outline">
+              {" "}
+              Saber más
+            </Button>
           </Link>
         </div>
       </div>

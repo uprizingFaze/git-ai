@@ -1,10 +1,8 @@
-import  Hero  from "@/components/hero/hero";
-import { Nav } from "@/components/navbar";
+import Hero from "@/components/hero/hero";
 
 export default function Home() {
   return (
     <main>
-      <Nav />
       <section>
         <Hero />
       </section>
