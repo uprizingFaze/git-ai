@@ -3,7 +3,6 @@
 import Icon from "@/components/icon";
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
-import RepoSwitcher from "./repo-switcher";
 
 function Nav() {
   const pathname = usePathname();
@@ -48,7 +47,7 @@ function Nav() {
           </li>
         </ul>
         <li className="ml-auto">
-          <RepoSwitcher />
+          {/* <RepoSwitcher /> */}
         </li>
       </ul>
     </nav>
