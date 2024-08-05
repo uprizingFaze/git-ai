@@ -3,7 +3,7 @@
 import Icon from "@/components/icon";
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
-import TeamSwitcher from "./team-switcher";
+import RepoSwitcher from "./repo-switcher";
 
 function Nav() {
   const pathname = usePathname();
@@ -19,7 +19,7 @@ function Nav() {
           <li>
             <Link
               href="/"
-              className={`text-muted-foreground ${
+              className={`text-muted-foreground hover:text-black dark:hover:text-white ${
                 pathname === "/" ? "dark:text-white text-black" : ""
               }`}
             >
@@ -28,27 +28,27 @@ function Nav() {
           </li>
           <li>
             <Link
-              href="/docs"
-              className={`text-muted-foreground ${
-                pathname === "/docs" ? "dark:text-white text-black" : ""
+              href="/chat"
+              className={`text-muted-foreground hover:text-black dark:hover:text-white ${
+                pathname === "/chat" ? "dark:text-white text-black" : ""
               }`}
             >
-              Docs
+              chat
             </Link>
           </li>
           <li>
             <Link
-              href="/about"
-              className={`text-muted-foreground ${
-                pathname === "/about" ? "dark:text-white text-black" : ""
+              href="/ui"
+              className={`text-muted-foreground hover:text-black dark:hover:text-white ${
+                pathname === "/ui" ? "dark:text-white text-black" : ""
               }`}
             >
-              About
+              ui
             </Link>
           </li>
         </ul>
         <li className="ml-auto">
-          <TeamSwitcher />
+          <RepoSwitcher />
         </li>
       </ul>
     </nav>

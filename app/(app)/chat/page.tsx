@@ -1,5 +1,4 @@
 "use client";
-
 import { useChat } from "ai/react";
 import { Avatar } from "@/components/ui/avatar";
 import { Textarea } from "@/components/ui/textarea";
