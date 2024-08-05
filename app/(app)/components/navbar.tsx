@@ -9,16 +9,13 @@ function Nav() {
   const pathname = usePathname();
   return (
     <nav className="fixed top-10 inset-x-0 max-w-3xl mx-auto z-50">
-      <div>
-        <TeamSwitcher />
-      </div>
-      <ul className="dark:bg-black bg-white flex items-center py-3  px-8 border rounded-xl">
+      <ul className="dark:bg-black bg-white flex items-center py-3 px-8 border rounded-xl">
         <li className="flex-shrink-0">
           <Link href="/">
             <Icon />
           </Link>
         </li>
-        <ul className="flex-1 flex justify-center space-x-4">
+        <ul className="flex-1 flex items-center justify-center space-x-4">
           <li>
             <Link
               href="/"
@@ -46,10 +43,13 @@ function Nav() {
                 pathname === "/about" ? "dark:text-white text-black" : ""
               }`}
             >
-              about
+              About
             </Link>
           </li>
         </ul>
+        <li className="ml-auto">
+          <TeamSwitcher />
+        </li>
       </ul>
     </nav>
   );

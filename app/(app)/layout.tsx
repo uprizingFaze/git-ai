@@ -1,4 +1,4 @@
-import Nav from "./chat/components/navbar";
+import Nav from "./components/navbar";
 
 export default function TeamLayout({
   children,
