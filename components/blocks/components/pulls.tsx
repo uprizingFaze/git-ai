@@ -1,8 +1,8 @@
 import { fetchPr } from "@/app/api/github-api";
 
 async function RepoPull({
-  username = "shuding",
-  repository = "next-view-transitions",
+  username = "uprizingFaze",
+  repository = "git-ai",
 }: {
   username?: string;
   repository?: string;

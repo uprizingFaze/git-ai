@@ -4,8 +4,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 async function RepoIssues({
-  username = "shuding",
-  repository = "next-view-transitions",
+  username = "uprizingFaze",
+  repository = "git-ai",
 }: {
   username?: string;
   repository?: string;

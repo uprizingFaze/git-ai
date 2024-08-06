@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "next-view-transitions";
 import { SiGithub, SiTwitter } from "react-icons/si";
 
-async function UserInfo({ username = "shuding" }: { username?: string }) {
+async function UserInfo({ username = "uprizingFaze" }: { username?: string }) {
   const userInfo = await fetchUser(username);
 
   return (
