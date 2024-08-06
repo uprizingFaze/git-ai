@@ -12,14 +12,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { BotIcon, SendIcon, UserIcon } from "@/components/icons";
 
-// Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
-export default function PageChat() {
+function PageChat() {
   const [input, setInput] = useState<string>("");
   const [conversation, setConversation] = useUIState();
   const { continueConversation } = useActions();
-
   const { messages, handleInputChange, handleSubmit, isLoading, stop } =
     useChat({
       keepLastMessageOnError: true,
@@ -28,8 +26,33 @@ export default function PageChat() {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
-      handleSubmit();
+      sendMessage();
     }
+  };
+
+  const sendMessage = async () => {
+    if (input.trim() === "") return;
+
+    const userMessage: ClientMessage = {
+      id: generateId(),
+      role: "user",
+      display: input,
+    };
+
+    setConversation((currentConversation: ClientMessage[]) => [
+      ...currentConversation,
+      userMessage,
+    ]);
+
+    setInput(""); // Limpiar el input después de enviar el mensaje
+
+    const message = await continueConversation(input);
+    setConversation((currentConversation: ClientMessage[]) => [
+      ...currentConversation,
+      message,
+    ]);
+
+    handleSubmit(); // Llamada a handleSubmit de useChat
   };
 
   return (
@@ -70,36 +93,21 @@ export default function PageChat() {
             ))}
           </div>
         </ScrollArea>
-        <div className="p-4 flex items-center gap-4">
+        <div className="p-4 bg-black/95 flex justify-center items-center gap-4">
           <Textarea
-            placeholder="Type your message..."
-            className="flex-1 bg-background text-foreground border focus:ring-0 resize-none"
+            placeholder="Escribe tu mensaje..."
+            className="max-w-4xl bg-background text-foreground border focus:ring-0 resize-none"
             name="prompt"
             value={input}
             onChange={(event) => {
               setInput(event.target.value);
-              handleInputChange(event); // Integrar con el manejo de entrada de useChat
+              handleInputChange(event);
             }}
             onKeyDown={handleKeyDown}
             disabled={isLoading}
           />
           {!isLoading && (
-            <Button
-              size="chat"
-              onClick={async () => {
-                setConversation((currentConversation: ClientMessage[]) => [
-                  ...currentConversation,
-                  { id: generateId(), role: "user", display: input },
-                ]);
-                const message = await continueConversation(input);
-                setConversation((currentConversation: ClientMessage[]) => [
-                  ...currentConversation,
-                  message,
-                ]);
-                handleSubmit(); // Llamada a handleSubmit de useChat
-              }}
-              disabled={isLoading}
-            >
+            <Button size="chat" onClick={sendMessage} disabled={isLoading}>
               <SendIcon className="w-6 h-6" />
               <span className="sr-only">Send</span>
             </Button>
@@ -116,3 +124,5 @@ export default function PageChat() {
     </section>
   );
 }
+
+export default PageChat;

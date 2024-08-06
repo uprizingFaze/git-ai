@@ -47,7 +47,6 @@ function Nav() {
           </li>
         </ul>
         <li className="ml-auto">
-          {/* <RepoSwitcher /> */}
         </li>
       </ul>
     </nav>
