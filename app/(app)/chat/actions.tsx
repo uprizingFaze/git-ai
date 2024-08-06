@@ -10,6 +10,7 @@ import { SkeletonDemo } from "@/components/blocks/skeletons/test";
 import RepoInfo from "@/components/blocks/components/repo-info";
 import UserInfo from "@/components/blocks/components/users-info";
 import RepoBranch from "@/components/blocks/components/branches";
+import RepoContributors from "@/components/blocks/components/contributors";
 
 export interface ServerMessage {
   role: "user" | "assistant";
@@ -126,6 +127,28 @@ export async function continueConversation(
           return (
             <Suspense fallback={<SkeletonDemo />}>
               <UserInfo username={username}  />
+            </Suspense>
+          );
+        },
+      },
+      contributors: {
+        description: "Get information for contributors in the repository of github",
+        parameters: z.object({
+          username: z.string().describe("The Name of user"),
+          repository: z.string().describe("Th Name of repository of user"),
+        }),
+        generate: async ({ username, repository }) => {
+          history.done((messages: ServerMessage[]) => [
+            ...messages,
+            {
+              role: "assistant",
+              content: `Showing general information contributors of the repository ${repository} for the user ${username} `,
+            },
+          ]);
+
+          return (
+            <Suspense fallback={<SkeletonDemo />}>
+              <RepoContributors username={username} repository={repository} />
             </Suspense>
           );
         },
