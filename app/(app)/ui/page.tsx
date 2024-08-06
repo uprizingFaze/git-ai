@@ -4,6 +4,12 @@ import { SkeletonDemo } from "@/components/blocks/skeletons/test";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import CommitActivity from "@/components/blocks/components/test";
+import RepoBranch from "@/components/blocks/components/branches";
+import RepoPull from "@/components/blocks/components/pulls";
+import RepoPullClosed from "@/components/blocks/components/pulls-closet";
+import RepoIssues from "@/components/blocks/components/issues";
+import RepoContributors from "@/components/blocks/components/contributors";
+import UserInfo from "@/components/blocks/components/users-info";
 
 export const metadata: Metadata = {
   title: "Git Ai - UI",
@@ -39,6 +45,38 @@ function Uipage() {
         </div>
         <div className="border rounded-lg bg-background">
           <CommitActivity />
+        </div>
+      </section>
+      <section className="grid border grid-cols-1 md:grid-cols-2 gap-4 bg-black m-6 rounded-xl p-6">
+        <div className="border rounded-lg bg-background">
+          <RepoBranch />
+        </div>
+        <div className="border rounded-lg bg-background">
+          <RepoPull />
+        </div>
+      </section>
+      <section className="grid border grid-cols-1 md:grid-cols-2 gap-4 bg-black m-6 rounded-xl p-6">
+        <div className="border rounded-lg bg-background">
+          <RepoPullClosed />
+        </div>
+        <div className="border rounded-lg bg-background">
+          <RepoPull />
+        </div>
+      </section>
+      <section className="grid border grid-cols-1 md:grid-cols-2 gap-4 bg-black m-6 rounded-xl p-6">
+        <div className="border rounded-lg bg-background">
+          <RepoIssues />
+        </div>
+        <div className="border rounded-lg bg-background">
+          <RepoContributors />
+        </div>
+      </section>
+      <section className="grid border grid-cols-1 md:grid-cols-2 gap-4 bg-black m-6 rounded-xl p-6">
+        <div className="border rounded-lg bg-background">
+          <UserInfo />
+        </div>
+        <div className="border rounded-lg bg-background">
+          {/* <RepoContributors /> */}
         </div>
       </section>
     </main>

@@ -8,6 +8,7 @@ import { generateId } from "ai";
 import CommitList from "@/components/blocks/components/commit-list";
 import { SkeletonDemo } from "@/components/blocks/skeletons/test";
 import RepoInfo from "@/components/blocks/components/repo-info";
+import UserInfo from "@/components/blocks/components/users-info";
 
 export interface ServerMessage {
   role: "user" | "assistant";
@@ -74,13 +75,34 @@ export async function continueConversation(
             ...messages,
             {
               role: "assistant",
-              content: `Showing general information of thre repository ${repository} for the user ${username} `,
+              content: `Showing general information of the repository ${repository} for the user ${username} `,
             },
           ]);
 
           return (
             <Suspense fallback={<SkeletonDemo />}>
               <RepoInfo username={username} repository={repository} />
+            </Suspense>
+          );
+        },
+      },
+      usergithub: {
+        description: "Get information for user of github",
+        parameters: z.object({
+          username: z.string().describe("The Name of user"),
+        }),
+        generate: async ({ username }) => {
+          history.done((messages: ServerMessage[]) => [
+            ...messages,
+            {
+              role: "assistant",
+              content: `Showing information for the user ${username} `,
+            },
+          ]);
+
+          return (
+            <Suspense fallback={<SkeletonDemo />}>
+              <UserInfo username={username}  />
             </Suspense>
           );
         },

@@ -1,4 +1,3 @@
-import React from 'react';
 import { fetchRepoInfo } from '@/app/api/github-api';
 
 async function RepoInfo({
