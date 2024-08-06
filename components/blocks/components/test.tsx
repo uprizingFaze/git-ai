@@ -2,8 +2,8 @@
 import { fetchRepoCommit } from "@/app/api/github-api";
 
 async function CommitActivity({
-    username = "uprizingFaze",
-    repository = "git-ai",
+  username = "uprizingFaze",
+  repository = "git-ai",
 }: {
   username?: string;
   repository?: string;
