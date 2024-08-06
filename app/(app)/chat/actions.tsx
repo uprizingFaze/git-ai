@@ -2,10 +2,13 @@
 
 import { createAI, getMutableAIState, streamUI } from "ai/rsc";
 import { openai } from "@ai-sdk/openai";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { z } from "zod";
 import { generateId } from "ai";
 import Test from "@/components/blocks/components/test";
+import { SkeletonDemo } from "@/components/blocks/skeletons/test";
+import CommmitChart from "@/components/blocks/components/commit-chart";
+import RepoInfo from "@/components/blocks/components/repo-info";
 
 export interface ServerMessage {
   role: "user" | "assistant";
@@ -39,6 +42,50 @@ export async function continueConversation(
       return <div>{content}</div>;
     },
     tools: {
+      repocommits: {
+        description: "Get commits repository for github",
+        parameters: z.object({
+          username: z.string().describe("The Name of user"),
+          repository: z.string().describe("Th Name of repository of user"),
+        }),
+        generate: async ({ username, repository }) => {
+          history.done((messages: ServerMessage[]) => [
+            ...messages,
+            {
+              role: "assistant",
+              content: `Showing commits for the ${username} in the repository ${repository} `,
+            },
+          ]);
+
+          return (
+            <Suspense fallback={<SkeletonDemo />}>
+              <Test username={username} repository={repository} />
+            </Suspense>
+          );
+        },
+      },
+      repoinfo: {
+        description: "Get general information for repository of github",
+        parameters: z.object({
+          username: z.string().describe("The Name of user"),
+          repository: z.string().describe("Th Name of repository of user"),
+        }),
+        generate: async ({ username, repository }) => {
+          history.done((messages: ServerMessage[]) => [
+            ...messages,
+            {
+              role: "assistant",
+              content: `Showing general information of thre repository ${repository} for the user ${username} `,
+            },
+          ]);
+
+          return (
+            <Suspense fallback={<SkeletonDemo />}>
+              <RepoInfo username={username} repository={repository} />
+            </Suspense>
+          );
+        },
+      },
       showFlightStatus: {
         description: "Get the status of a flight",
         parameters: z.object({
@@ -55,7 +102,11 @@ export async function continueConversation(
             },
           ]);
 
-          return <Test />;
+          return (
+            <Suspense fallback={<SkeletonDemo />}>
+              <CommmitChart />
+            </Suspense>
+          );
         },
       },
     },

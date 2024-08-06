@@ -4,8 +4,8 @@ import Image from "next/image";
 
 function Hero() {
   return (
-    <section className="">
-      <div className="hero  border px-10 pt-40 m-6 rounded-xl">
+    <main className="">
+      <div className="hero border px-10 pt-40 m-6 rounded-xl">
         <div className="">
           <p className="text-9xl font-semibold bg-gradient-to-b from-white to-neutral-700 text-transparent bg-clip-text">
             Git-Ai
@@ -50,7 +50,7 @@ function Hero() {
           </Link>
         </div>
       </div>
-    </section>
+    </main>
   );
 }
 
