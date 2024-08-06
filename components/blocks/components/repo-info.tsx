@@ -2,8 +2,8 @@ import React from 'react';
 import { fetchRepoInfo } from '@/app/api/github-api';
 
 async function RepoInfo({
-  username = "shadcn-ui",
-  repository = "ui",
+  username = "uprizingFaze",
+  repository = "git-ai",
 }: {
   username?: string;
   repository?: string;

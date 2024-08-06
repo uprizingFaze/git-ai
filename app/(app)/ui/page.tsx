@@ -1,9 +1,9 @@
 import RepoInfo from "@/components/blocks/components/repo-info";
-import Test from "@/components/blocks/components/test";
+import CommitList from "@/components/blocks/components/commit-list";
 import { SkeletonDemo } from "@/components/blocks/skeletons/test";
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import CommmitChart from "@/components/blocks/components/commit-chart";
+import CommitActivity from "@/components/blocks/components/test";
 
 export const metadata: Metadata = {
   title: "Git Ai - UI",
@@ -25,11 +25,11 @@ function Uipage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-lg bg-background h-min">
             <Suspense fallback={<SkeletonDemo />}>
-              <Test />
+              <CommitList />
             </Suspense>
           </div>
           <div className="border rounded-lg bg-background">
-            <CommmitChart />
+            <SkeletonDemo />
           </div>
         </div>
       </section>
@@ -38,7 +38,7 @@ function Uipage() {
           <RepoInfo />
         </div>
         <div className="border rounded-lg bg-background">
-          <SkeletonDemo />
+          <CommitActivity />
         </div>
       </section>
     </main>

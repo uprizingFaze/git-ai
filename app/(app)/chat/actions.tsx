@@ -5,9 +5,8 @@ import { openai } from "@ai-sdk/openai";
 import { ReactNode, Suspense } from "react";
 import { z } from "zod";
 import { generateId } from "ai";
-import Test from "@/components/blocks/components/test";
+import CommitList from "@/components/blocks/components/commit-list";
 import { SkeletonDemo } from "@/components/blocks/skeletons/test";
-import CommmitChart from "@/components/blocks/components/commit-chart";
 import RepoInfo from "@/components/blocks/components/repo-info";
 
 export interface ServerMessage {
@@ -59,7 +58,7 @@ export async function continueConversation(
 
           return (
             <Suspense fallback={<SkeletonDemo />}>
-              <Test username={username} repository={repository} />
+              <CommitList username={username} repository={repository} />
             </Suspense>
           );
         },
@@ -82,29 +81,6 @@ export async function continueConversation(
           return (
             <Suspense fallback={<SkeletonDemo />}>
               <RepoInfo username={username} repository={repository} />
-            </Suspense>
-          );
-        },
-      },
-      showFlightStatus: {
-        description: "Get the status of a flight",
-        parameters: z.object({
-          flightNumber: z
-            .string()
-            .describe("The flight number to get status for"),
-        }),
-        generate: async () => {
-          history.done((messages: ServerMessage[]) => [
-            ...messages,
-            {
-              role: "assistant",
-              content: `Showing flight status for`,
-            },
-          ]);
-
-          return (
-            <Suspense fallback={<SkeletonDemo />}>
-              <CommmitChart />
             </Suspense>
           );
         },

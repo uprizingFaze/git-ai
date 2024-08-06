@@ -1,37 +1,48 @@
-import { ScrollArea } from "@/components/ui/scroll-area";
+
 import { fetchRepoCommit } from "@/app/api/github-api";
 
-export default async function Test({
-  username = "uprizingFaze",
-  repository = "git-ai",
+async function CommitActivity({
+    username = "uprizingFaze",
+    repository = "git-ai",
 }: {
   username?: string;
   repository?: string;
 }) {
+  const commits = await fetchRepoCommit(username, repository);
 
-  const githubCommits = await fetchRepoCommit(username, repository);
+  const dateCounts: { [key: string]: number } = {};
+
+  commits.forEach((commit: any) => {
+    const date = commit.commit.committer.date.split("T")[0];
+    dateCounts[date] = (dateCounts[date] || 0) + 1; 
+  });
+
+  const commitData = Object.entries(dateCounts).map(([date, count]) => ({
+    date,
+    count,
+  }));
 
   return (
-    <section className="">
-      <ScrollArea className="h-72 max-w-2xl ">
-        <div className="p-6">
-          <h4 className="mb-4 text-xl font-medium leading-none">Commits</h4>
-          {githubCommits.map((commit: any) => {
-            const message = commit.commit.message;
-            const truncatedMessage =
-              message.length > 50 ? message.substring(0, 50) + "..." : message;
-            return (
-              <div
-                key={commit.sha}
-                className="text-sm dark:bg-black bg-white border rounded-md my-2 p-2"
-                title={message}
-              >
-                {truncatedMessage}
-              </div>
-            );
-          })}
-        </div>
-      </ScrollArea>
-    </section>
+    <div className="p-4">
+      <h2 className="text-2xl mb-4">Actividad de Commits</h2>
+      <table className="min-w-full  border ">
+        <thead>
+          <tr>
+            <th className="py-2 px-4 border-b">Fecha</th>
+            <th className="py-2 px-4 border-b">Cantidad de Commits</th>
+          </tr>
+        </thead>
+        <tbody>
+          {commitData.map((commit) => (
+            <tr key={commit.date}>
+              <td className="py-2 px-4 border-b">{commit.date}</td>
+              <td className="py-2 px-4 border-b">{commit.count}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
+
+export default CommitActivity;
