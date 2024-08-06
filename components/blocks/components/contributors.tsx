@@ -3,8 +3,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 async function RepoContributors({
-  username = "uprizingFaze",
-  repository = "git-ai",
+  username = "vercel",
+  repository = "ai-chatbot",
 }: {
   username?: string;
   repository?: string;

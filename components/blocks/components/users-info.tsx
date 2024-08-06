@@ -1,10 +1,8 @@
 import { fetchUser } from "@/app/api/github-api";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Link } from "next-view-transitions";
 import { SiGithub, SiTwitter } from "react-icons/si";
 
-async function UserInfo({ username = "uprizingFaze" }: { username?: string }) {
+async function UserInfo({ username = "vercel" }: { username?: string }) {
   const userInfo = await fetchUser(username);
 
   return (

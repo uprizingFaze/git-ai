@@ -2,8 +2,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { fetchRepoCommit } from "@/app/api/github-api";
 
 export default async function CommitList({
-  username = "uprizingFaze",
-  repository = "git-ai",
+  username = "vercel",
+  repository = "ai-chatbot",
 }: {
   username?: string;
   repository?: string;

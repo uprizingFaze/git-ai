@@ -2,8 +2,8 @@ import { fetchBranches } from "@/app/api/github-api";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 async function RepoBranch({
-  username = "uprizingFaze",
-  repository = "git-ai",
+  username = "vercel",
+  repository = "ai-chatbot",
 }: {
   username?: string;
   repository?: string;
