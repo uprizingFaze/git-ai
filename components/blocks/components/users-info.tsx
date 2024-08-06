@@ -34,7 +34,7 @@ async function UserInfo({ username = "shuding" }: { username?: string }) {
             </div>
           </div>
         </div>
-        <p className="my-10 max-w-96">"{userInfo.bio}"</p>
+        <p className="my-10 max-w-96">&quot;{userInfo.bio}&quot;</p>
         <div className="flex">
           <div className="dark:bg-black bg-white py-8 px-6 rounded-lg border">
             <p className="font-bold text-2xl">{userInfo.followers}</p>

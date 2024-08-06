@@ -16,7 +16,10 @@ async function RepoBranch({
         <h2 className="text-2xl font-bold">Ramas</h2>
         <ScrollArea className="max-h-40">
           {repoBranch.map((branch: any) => (
-            <div className="text-muted-foreground dark:bg-black my-2 border rounded-lg p-2 flex justify-between items-center">
+            <div
+              key={branch.name} 
+              className="text-muted-foreground dark:bg-black my-2 border rounded-lg p-2 flex justify-between items-center"
+            >
               <p>{branch.name}</p>
               <a
                 className="dark:text-blue-700 text-blue-500 mr-8"

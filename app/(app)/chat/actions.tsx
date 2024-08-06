@@ -11,6 +11,7 @@ import RepoInfo from "@/components/blocks/components/repo-info";
 import UserInfo from "@/components/blocks/components/users-info";
 import RepoBranch from "@/components/blocks/components/branches";
 import RepoContributors from "@/components/blocks/components/contributors";
+import RepoIssues from "@/components/blocks/components/issues";
 
 export interface ServerMessage {
   role: "user" | "assistant";
@@ -110,6 +111,28 @@ export async function continueConversation(
           );
         },
       },
+      repoissues: {
+        description: "Get information of issues for repository of github",
+        parameters: z.object({
+          username: z.string().describe("The Name of user"),
+          repository: z.string().describe("Th Name of repository of user"),
+        }),
+        generate: async ({ username, repository }) => {
+          history.done((messages: ServerMessage[]) => [
+            ...messages,
+            {
+              role: "assistant",
+              content: `Showing information issues of the repository ${repository} for the user ${username} `,
+            },
+          ]);
+
+          return (
+            <Suspense fallback={<SkeletonDemo />}>
+              <RepoIssues username={username} repository={repository} />
+            </Suspense>
+          );
+        },
+      },
       usergithub: {
         description: "Get information for user of github",
         parameters: z.object({
@@ -131,6 +154,7 @@ export async function continueConversation(
           );
         },
       },
+      
       contributors: {
         description: "Get information for contributors in the repository of github",
         parameters: z.object({
