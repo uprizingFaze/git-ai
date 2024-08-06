@@ -9,8 +9,8 @@ export default function Home() {
       <section>
         <Nav />
         <Hero />
-        <Technologies />
-        <Info />
+        {/* <Technologies />
+        <Info /> */}
       </section>
     </main>
   );

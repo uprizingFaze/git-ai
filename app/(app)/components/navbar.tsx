@@ -38,16 +38,7 @@ function Nav() {
               chat
             </Link>
           </li>
-          <li>
-            <Link
-              href="/prompts"
-              className={`text-muted-foreground ${
-                pathname === "/prompts" ? "dark:text-white text-black" : ""
-              }`}
-            >
-              prompts
-            </Link>
-          </li>
+
         </ul>
         <li className="flex-shrink-0 mx-1">
           <Link href="https://github.com/uprizingFaze/git-ai">

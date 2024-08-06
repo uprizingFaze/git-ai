@@ -15,7 +15,7 @@ import RepoPullClosed from "@/components/blocks/components/pulls-closed";
 import RepoPull from "@/components/blocks/components/pulls";
 import RepoInfo from "@/components/blocks/components/repo-info";
 import UserInfo from "@/components/blocks/components/users-info";
-import CommitActivity from "@/components/blocks/components/commit-ac";
+import CommitActivity from "@/components/blocks/components/test";
 
 export interface ServerMessage {
   role: "user" | "assistant";

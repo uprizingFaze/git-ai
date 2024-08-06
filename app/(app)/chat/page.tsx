@@ -95,7 +95,7 @@ function PageChat() {
         </ScrollArea>
         <div className="p-4 flex justify-center items-center gap-4">
           <Textarea
-            placeholder="Escribe tu mensaje..."
+            placeholder="Escribe tu mensaje... (preguntame que puedo hacer)"
             className="max-w-4xl bg-background text-foreground border focus:ring-0 resize-none"
             name="prompt"
             value={input}
