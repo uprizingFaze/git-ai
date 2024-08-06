@@ -1,4 +1,5 @@
 import { fetchBranches } from "@/app/api/github-api";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 async function RepoBranch({
   username = "shuding",
@@ -12,10 +13,22 @@ async function RepoBranch({
   return (
     <div className="p-4">
       <div className="mb-2">
-        <h2>Ramas</h2>
-        {repoBranch.map((branch: any) => (
-          <p>{branch.name}</p>
-        ))}
+        <h2 className="text-2xl font-bold">Ramas</h2>
+        <ScrollArea className="max-h-40">
+          {repoBranch.map((branch: any) => (
+            <div className="text-muted-foreground dark:bg-black my-2 border rounded-lg p-2 flex justify-between items-center">
+              <p>{branch.name}</p>
+              <a
+                className="dark:text-blue-700 text-blue-500 mr-8"
+                href={`https://github.com/${username}/${repository}/tree/${branch.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver
+              </a>
+            </div>
+          ))}
+        </ScrollArea>
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import CommitList from "@/components/blocks/components/commit-list";
 import { SkeletonDemo } from "@/components/blocks/skeletons/test";
 import RepoInfo from "@/components/blocks/components/repo-info";
 import UserInfo from "@/components/blocks/components/users-info";
+import RepoBranch from "@/components/blocks/components/branches";
 
 export interface ServerMessage {
   role: "user" | "assistant";
@@ -82,6 +83,28 @@ export async function continueConversation(
           return (
             <Suspense fallback={<SkeletonDemo />}>
               <RepoInfo username={username} repository={repository} />
+            </Suspense>
+          );
+        },
+      },
+      branches: {
+        description: "Get information of branches for repository of github",
+        parameters: z.object({
+          username: z.string().describe("The Name of user"),
+          repository: z.string().describe("Th Name of repository of user"),
+        }),
+        generate: async ({ username, repository }) => {
+          history.done((messages: ServerMessage[]) => [
+            ...messages,
+            {
+              role: "assistant",
+              content: `Showing general information branches of the repository ${repository} for the user ${username} `,
+            },
+          ]);
+
+          return (
+            <Suspense fallback={<SkeletonDemo />}>
+              <RepoBranch username={username} repository={repository} />
             </Suspense>
           );
         },
