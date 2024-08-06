@@ -93,7 +93,7 @@ function PageChat() {
             ))}
           </div>
         </ScrollArea>
-        <div className="p-4 bg-black/95 flex justify-center items-center gap-4">
+        <div className="p-4 flex justify-center items-center gap-4">
           <Textarea
             placeholder="Escribe tu mensaje..."
             className="max-w-4xl bg-background text-foreground border focus:ring-0 resize-none"

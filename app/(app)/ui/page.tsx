@@ -3,10 +3,10 @@ import CommitList from "@/components/blocks/components/commit-list";
 import { SkeletonDemo } from "@/components/blocks/skeletons/test";
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import CommitActivity from "@/components/blocks/components/test";
+import CommitActivity from "@/components/blocks/components/commit-ac";
 import RepoBranch from "@/components/blocks/components/branches";
 import RepoPull from "@/components/blocks/components/pulls";
-import RepoPullClosed from "@/components/blocks/components/pulls-closet";
+import RepoPullClosed from "@/components/blocks/components/pulls-closed";
 import RepoIssues from "@/components/blocks/components/issues";
 import RepoContributors from "@/components/blocks/components/contributors";
 import UserInfo from "@/components/blocks/components/users-info";
@@ -60,7 +60,7 @@ function Uipage() {
           <RepoPullClosed />
         </div>
         <div className="border rounded-lg bg-background">
-          <RepoPull />
+          <UserInfo />
         </div>
       </section>
       <section className="grid border grid-cols-1 md:grid-cols-2 gap-4 bg-black m-6 rounded-xl p-6">
@@ -71,14 +71,7 @@ function Uipage() {
           <RepoContributors />
         </div>
       </section>
-      <section className="grid border grid-cols-1 md:grid-cols-2 gap-4 bg-black m-6 rounded-xl p-6">
-        <div className="border rounded-lg bg-background">
-          <UserInfo />
-        </div>
-        <div className="border rounded-lg bg-background">
-          {/* <RepoContributors /> */}
-        </div>
-      </section>
+      
     </main>
   );
 }

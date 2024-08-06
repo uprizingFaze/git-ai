@@ -5,13 +5,17 @@ import { openai } from "@ai-sdk/openai";
 import { ReactNode, Suspense } from "react";
 import { z } from "zod";
 import { generateId } from "ai";
-import CommitList from "@/components/blocks/components/commit-list";
 import { SkeletonDemo } from "@/components/blocks/skeletons/test";
-import RepoInfo from "@/components/blocks/components/repo-info";
-import UserInfo from "@/components/blocks/components/users-info";
+
+import CommitList from "@/components/blocks/components/commit-list";
 import RepoBranch from "@/components/blocks/components/branches";
 import RepoContributors from "@/components/blocks/components/contributors";
 import RepoIssues from "@/components/blocks/components/issues";
+import RepoPullClosed from "@/components/blocks/components/pulls-closed";
+import RepoPull from "@/components/blocks/components/pulls";
+import RepoInfo from "@/components/blocks/components/repo-info";
+import UserInfo from "@/components/blocks/components/users-info";
+import CommitActivity from "@/components/blocks/components/commit-ac";
 
 export interface ServerMessage {
   role: "user" | "assistant";
@@ -34,6 +38,13 @@ export async function continueConversation(
   const result = await streamUI({
     model: openai("gpt-4o-mini"),
     messages: [...history.get(), { role: "user", content: input }],
+    system: `\
+    This is a chatbot that can show information about GitHub repositories and users.
+    
+    You can  commits of a repository, information of a repository, activity in a 
+    repo, branches of a repository, open PRs of a repository, closed PRs of a repository.
+    information of a user, issues of a repository, contributors of a repository.
+    `,
     text: ({ content, done }) => {
       if (done) {
         history.done((messages: ServerMessage[]) => [
@@ -85,6 +96,72 @@ export async function continueConversation(
           return (
             <Suspense fallback={<SkeletonDemo />}>
               <RepoInfo username={username} repository={repository} />
+            </Suspense>
+          );
+        },
+      },
+      pulls: {
+        description: "Get information for pr of the repository of github",
+        parameters: z.object({
+          username: z.string().describe("The Name of user"),
+          repository: z.string().describe("Th Name of repository of user"),
+        }),
+        generate: async ({ username, repository }) => {
+          history.done((messages: ServerMessage[]) => [
+            ...messages,
+            {
+              role: "assistant",
+              content: `Showing general information of the pr for repository ${repository} for the user ${username} `,
+            },
+          ]);
+
+          return (
+            <Suspense fallback={<SkeletonDemo />}>
+              <RepoPull username={username} repository={repository} />
+            </Suspense>
+          );
+        },
+      },
+      pullsclosed: {
+        description: "Get information for pr closed of the repository of github",
+        parameters: z.object({
+          username: z.string().describe("The Name of user"),
+          repository: z.string().describe("Th Name of repository of user"),
+        }),
+        generate: async ({ username, repository }) => {
+          history.done((messages: ServerMessage[]) => [
+            ...messages,
+            {
+              role: "assistant",
+              content: `Showing general information of the pr closed for repository ${repository} for the user ${username} `,
+            },
+          ]);
+
+          return (
+            <Suspense fallback={<SkeletonDemo />}>
+              <RepoPullClosed username={username} repository={repository} />
+            </Suspense>
+          );
+        },
+      },
+      commitact: {
+        description: "Get information the Activity for commits of the repository of github",
+        parameters: z.object({
+          username: z.string().describe("The Name of user"),
+          repository: z.string().describe("Th Name of repository of user"),
+        }),
+        generate: async ({ username, repository }) => {
+          history.done((messages: ServerMessage[]) => [
+            ...messages,
+            {
+              role: "assistant",
+              content: `Showing general information of the Activities commits for repository ${repository} for the user ${username} `,
+            },
+          ]);
+
+          return (
+            <Suspense fallback={<SkeletonDemo />}>
+              <CommitActivity username={username} repository={repository} />
             </Suspense>
           );
         },
@@ -149,14 +226,15 @@ export async function continueConversation(
 
           return (
             <Suspense fallback={<SkeletonDemo />}>
-              <UserInfo username={username}  />
+              <UserInfo username={username} />
             </Suspense>
           );
         },
       },
-      
+
       contributors: {
-        description: "Get information for contributors in the repository of github",
+        description:
+          "Get information for contributors in the repository of github",
         parameters: z.object({
           username: z.string().describe("The Name of user"),
           repository: z.string().describe("Th Name of repository of user"),

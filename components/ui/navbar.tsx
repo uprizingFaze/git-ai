@@ -29,22 +29,22 @@ function Nav() {
           </li>
           <li>
             <Link
-              href="/docs"
+              href="/chat"
               className={`text-muted-foreground ${
-                pathname === "/docs" ? "dark:text-white text-black" : ""
+                pathname === "/chat" ? "dark:text-white text-black" : ""
               }`}
             >
-              Docs
+              chat
             </Link>
           </li>
           <li>
             <Link
-              href="/about"
+              href="/prompts"
               className={`text-muted-foreground ${
-                pathname === "/about" ? "dark:text-white text-black" : ""
+                pathname === "/prompts" ? "dark:text-white text-black" : ""
               }`}
             >
-              about
+              prompts
             </Link>
           </li>
         </ul>
