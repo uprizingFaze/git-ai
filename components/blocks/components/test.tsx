@@ -19,7 +19,7 @@ export default async function Test() {
   const githubCommits = await githubData.json();
 
   return (
-    <ScrollArea className="h-72 max-w-2xl bg-background rounded-md border">
+    <ScrollArea className="h-72 max-w-2xl ">
       <div className="p-4">
         <h4 className="mb-4 text-xl font-medium leading-none">Commits</h4>
         {githubCommits.map((commit: any) => {
