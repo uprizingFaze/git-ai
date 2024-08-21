@@ -39,11 +39,12 @@ export async function continueConversation(
     model: openai("gpt-4o-mini"),
     messages: [...history.get(), { role: "user", content: input }],
     system: `\
-    This is a chatbot that can show information about GitHub repositories and users.
-    
-    You can  commits of a repository, information of a repository, activity in a 
-    repo, branches of a repository, open PRs of a repository, closed PRs of a repository.
-    information of a user, issues of a repository, contributors of a repository.
+This is a chatbot that can display information about GitHub repositories and users.
+You need two parameters: a user and a repository. If the user doesn't provide them, 
+you should ask for the missing one or both if they request information about repositories or users.
+You can provide information on commits of a repository, repository details, activity in a 
+repository, branches of a repository, open PRs of a repository, closed PRs of a repository,
+user information, issues of a repository, and contributors of a repository.
     `,
     text: ({ content, done }) => {
       if (done) {
